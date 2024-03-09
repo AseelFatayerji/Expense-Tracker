@@ -6,7 +6,7 @@
   font-family: "Karla";
 }
 body {
-  padding: 100px;
+  padding: 50px;
   background-color: #f0f0f0;
 }
 input[type="text"] {
@@ -50,7 +50,7 @@ option {
   color: var(--main);
 }
 
-.submit{
+.submit {
   font-size: 26px;
   background-color: var(--main);
   border-radius: 50px;
@@ -87,40 +87,39 @@ option {
   align-content: center;
   padding: 10px;
 }
-.breakdown-contain{
+.breakdown-contain {
   align-items: center;
   width: 100%;
   padding: 10px;
 }
 
-.breakdown-text1{
-    font-size: 26px;
-    font-weight: bold;
-    color: var(--main);
-
+.breakdown-text1 {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--main);
 }
-.breadown-text2{
-    font-size: 16px;
-    color: var(--accent);
+.breadown-text2 {
+  font-size: 16px;
+  color: var(--accent);
 }
-.breadown-price{
-    text-align: right;
+.breadown-price {
+  text-align: right;
 }
-.edit{
-    color: darkgreen;
-    background-color: lightgreen;
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 30px;
-    cursor: pointer;
+.edit {
+  color: darkgreen;
+  background-color: lightgreen;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 30px;
+  cursor: pointer;
 }
-.del{
-    color: darkred;
-    background-color: lightsalmon;
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 30px;
-    cursor: pointer;
+.del {
+  color: darkred;
+  background-color: lightsalmon;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 30px;
+  cursor: pointer;
 }
 .label {
   font-size: 36px;
@@ -128,9 +127,17 @@ option {
   text-align: center;
   color: lightslategray;
 }
+.chart-container {
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
 .chart {
   background-color: white;
   border-radius: 40px;
+  margin: 10px;
+  width: 90%;
+  height: fit-content;
 }
 .icon {
   background-color: var(--accent);
@@ -149,6 +156,7 @@ option {
 }
 .inputs {
   border-radius: 20px;
+  padding: 10px;
   background-color: #f8f4f7;
   align-items: center;
   align-content: center;
@@ -192,8 +200,8 @@ option {
 }
 
 /* The actual popup (appears on top) */
-.hidden{
-    display: none;
+.hidden {
+  display: none;
 }
 .popup {
   width: max-content;
@@ -202,7 +210,7 @@ option {
   text-align: center;
   border-radius: 20px;
   left: 30.3%;
-  top:42%;
+  top: 42%;
   padding: 8px 0;
   position: fixed;
 }
@@ -211,22 +219,22 @@ option {
   font-size: 16px;
   border-radius: 20px;
 }
-.popup-intput{
-    font-size: 16px;
-    width: 200px;
-    height: 20px;
-    padding: 5px;
+.popup-intput {
+  font-size: 16px;
+  width: 200px;
+  height: 20px;
+  padding: 5px;
 }
-.popup-select{
-    background-color: darkgreen;
-    font-size: 16px;
-    height: 20px;
+.popup-select {
+  background-color: darkgreen;
+  font-size: 16px;
+  height: 20px;
 }
-.popup-button{
-    background-color: darkgreen;
-    border-color: transparent;
-    border-radius: 10px;
-    color: white;
-    font-size: 20px;
-    text-align: center;
+.popup-button {
+  background-color: darkgreen;
+  border-color: transparent;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
 }

@@ -14,44 +14,65 @@
       src="https://kit.fontawesome.com/3466402afb.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   </head>
   <body>
     <div class="main container flex-between">
       <div class="info">
-        <div class="total" >
-            <div class="title">Total:</div>
-            <div id="total">
-
-            </div>
+        <div class="total">
+          <div class="title">Total:</div>
+          <div id="total"></div>
         </div>
         <div class="breakdown">
           <div class="label">Breakdown</div>
           <div id="expenses"></div>
         </div>
         <span class="popup hidden" id="myPopup">
-            <form onsubmit="window.location.reload();">
-                <div class="container">
-                  <div class="child">
-                    <div class="col container flex-even">
-                      <div ><i class="fa-solid fa-sack-xmark icon2"><input class="popup-intput" type="number" id="amount-adjust" /></i></div>
-                    </div>
-                    <div class="col2"><i  class="fa-solid fa-tag icon2"><input class="popup-intput" type="text" id="type-adjust" /></i></div>
-                  </div>
-                </div>
-                <div class="button">
-                  <input type="submit" class="popup-button" onclick="AdjustExpense()" value="Adjust Expense" />
-                </div>
-              </form>
-        </span>
-      </div>
-      <div>
-        <div class="chart"></div>
-        <div class="inputs">
           <form onsubmit="window.location.reload();">
             <div class="container">
               <div class="child">
                 <div class="col container flex-even">
-                  <div ><i class="fa-solid fa-sack-xmark icon"><input type="number" id="amount" /></i></div>
+                  <div>
+                    <i class="fa-solid fa-sack-xmark icon2"
+                      ><input
+                        class="popup-intput"
+                        type="number"
+                        id="amount-adjust"
+                    /></i>
+                  </div>
+                </div>
+                <div class="col2">
+                  <i class="fa-solid fa-tag icon2"
+                    ><input class="popup-intput" type="text" id="type-adjust"
+                  /></i>
+                </div>
+              </div>
+            </div>
+            <div class="button">
+              <input
+                type="submit"
+                class="popup-button"
+                onclick="AdjustExpense()"
+                value="Adjust Expense"
+              />
+            </div>
+          </form>
+        </span>
+      </div>
+      <div>
+        <div class="inputs">
+          <div class="chart-container">
+            <canvas id="myChart" class="chart"></canvas>
+          </div>
+          <form onsubmit="window.location.reload();">
+            <div class="container">
+              <div class="child">
+                <div class="col container flex-even">
+                  <div>
+                    <i class="fa-solid fa-sack-xmark icon"
+                      ><input type="number" id="amount"
+                    /></i>
+                  </div>
                   <div>
                     <select id="currency">
                       <option value="Dollar" selected id="USD"></option>
@@ -61,24 +82,48 @@
                     </select>
                   </div>
                 </div>
-                <div class="col2"><i  class="fa-solid fa-tag icon"><input type="text" id="type" /></i></div>
+                <div class="col2">
+                  <i class="fa-solid fa-tag icon"
+                    ><input type="text" id="type"
+                  /></i>
+                </div>
                 <div class="child center">
                   <ul>
                     <li>
-                      <input type="radio" name="items" value="Food" id="food" />Food/Groceries
+                      <input
+                        type="radio"
+                        name="items"
+                        value="Food"
+                        id="food"
+                      />Food/Groceries
                     </li>
                     <li>
-                      <input type="radio" name="items" value="Transport" id="travel" />Travel/Commutes
+                      <input
+                        type="radio"
+                        name="items"
+                        value="Transport"
+                        id="travel"
+                      />Travel/Commutes
                     </li>
                     <li>
-                      <input type="radio" name="items" value="Misc" id="shop" />Shopping/Hobbies
+                      <input
+                        type="radio"
+                        name="items"
+                        value="Misc"
+                        id="shop"
+                      />Shopping/Hobbies
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="button">
-              <input type="submit"class="submit" onclick="AddExpense()" value="Add Expense" />
+              <input
+                type="submit"
+                class="submit"
+                onclick="AddExpense()"
+                value="Add Expense"
+              />
             </div>
           </form>
         </div>

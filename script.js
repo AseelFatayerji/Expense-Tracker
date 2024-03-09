@@ -20,7 +20,7 @@ async function GetCurrency() {
     });
 }
 window.onload = () => {
-  console.log("onload " + localStorage.getItem("expense"));
+  console.log("onload " + JSON.parse(localStorage.getItem("expense"), "[]"));
   if (localStorage.getItem("expense") == null) {
     let empty = [];
     localStorage.setItem("expense", JSON.stringify(empty));
@@ -95,6 +95,8 @@ function displayExpense() {
     edi.id = exp[i].name;
     edi.addEventListener("click", function () {
       let popup = document.getElementById("myPopup");
+      let btn = document.getElementsByClassName("popup-button");
+      btn.id = edi.id;
       popup.classList.remove("hidden");
     });
 
@@ -172,5 +174,52 @@ function displayTotal() {
     total += parseInt(exp[i].price);
   }
   document.getElementById("total").innerText = total + "$";
+  let expenses = ["Food", "Transport", "Misc"];
+  let barColors = ["yellow", "blue", "red"];
+  let prices = [];
+  for (let i = 0; i < exp.length; i++) {
+    if (exp[i].category == "Food") {
+      prices[0] += parseInt(exp[i].price);
+    } else if (exp[i].category == "Transport") {
+      prices[1] += parseInt(exp[i].price);
+    } else {
+      prices[2] += parseInt(exp[i].price);
+    }
+  }
+  new Chart("myChart", {
+    type: "pie",
+    data: {
+      labels: expenses,
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: prices,
+        },
+      ],
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Expense Chart",
+      },
+    },
+  });
+}
+function AdjustExpense() {
+  let exp = JSON.parse(localStorage.getItem("expense"));
+  let item = document.getElementsByClassName("popup-button");
+  let new_price = document.getElementById("amount-adjust");
+  let new_type = document.getElementById("type-adjust");
+  let index = 0;
+  for (let i = 0; i < exp.length; i++) {
+    if (exp[i].name == item.id) {
+      index = i;
+      break;
+    }
+  }
+  exp[index].name = new_type.value;
+  exp[index].price = new_price.value;
+  console.log(exp);
+  localStorage.setItem("expense", JSON.stringify(exp));
 }
 GetCurrency();
