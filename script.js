@@ -30,8 +30,7 @@ async function convertTo(currency, amount) {
       },
     }
   )
-    const content = await convert.json();
-    return await content;  
+    return convert.json();  
 }
 
 window.onload = () => {
