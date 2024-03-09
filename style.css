@@ -86,6 +86,41 @@ option {
   align-content: center;
   padding: 10px;
 }
+.breakdown-contain{
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.breakdown-text1{
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--main);
+    padding-left: 10px;
+
+}
+.breadown-text2{
+    font-size: 16px;
+    margin-left: 20px;
+    color: var(--accent);
+}
+.breadown-price{
+    align-self: flex-end;
+}
+.edit{
+    color: darkgreen;
+    background-color: lightgreen;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 30px;
+}
+.del{
+    color: darkred;
+    background-color: lightsalmon;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 30px;
+}
 .label {
   font-size: 36px;
   font-weight: bold;
@@ -102,6 +137,14 @@ option {
   font-size: 26px;
   padding: 5px 10px 5px 15px;
   border-radius: 20px;
+}
+.icons {
+  background-color: var(--accent);
+  color: var(--main);
+  font-size: 26px;
+  padding: 6px;
+  width: 35px;
+  border-radius: 10px;
 }
 .inputs {
   border-radius: 20px;

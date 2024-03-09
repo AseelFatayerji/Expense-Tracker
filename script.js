@@ -73,45 +73,49 @@ function displayExpense() {
     let text = document.createElement("div");
     let prices = document.createElement("div");
     let edit = document.createElement("div");
+    let br = document.createElement("br")
 
     let icon = document.createElement("i");
-    let edi = document.createElement("a");
-    let del = document.createElement("a");
+    let edi = document.createElement("i");
+    let del = document.createElement("i");
 
     let price = document.createElement("label");
     let name = document.createElement("label");
     let category = document.createElement("label");
 
-    main.className = " container flex-around";
-    price.className = "breadown-price";
+    main.className = " container flex-around breakdown-contain";
+    symbol.className ="child";
+    price.className = "breadown-price child";
     name.className = "breakdown-text1";
     category.className = "breakdown-text2";
-    edit.className = " container flex-even";
+    edit.className = " container flex-even child";
     edi.className = "fa-solid fa-pen-to-square edit";
     del.className = "fa-solid fa-trash del";
 
     del.id = exp[i].name;
-    del.onclick =()=>{
+    del.addEventListener('click',function(){
         let exp = JSON.parse(localStorage.getItem("expense"));
         let newexp = [];
         for (let i = 0; i < exp.length; i++) {
-          if (exp[i].name != item) {
+          if (exp[i].name != del.id) {
             newexp.push(exp[i]);
           }
         }
         localStorage.setItem("expense", JSON.stringify(newexp));
-    };
+        location.reload()
+    });
     edit.appendChild(del);
     edit.appendChild(edi);
 
     if (exp[i].category == "Food") {
-      icon.className = "fa-solid fa-utensils icon";
+      icon.className = "fa-solid fa-utensils icons";
       name.innerText = exp[i].name;
       category.innerText = exp[i].category;
       price.innerText = " ~ " + exp[i].currency + " " + exp[i].price;
 
       symbol.appendChild(icon);
       text.appendChild(name);
+      text.appendChild(br)
       text.appendChild(category);
       main.appendChild(icon);
       main.appendChild(text);
@@ -119,7 +123,7 @@ function displayExpense() {
       main.appendChild(edit);
       container.appendChild(main);
     } else if (exp[i].category == "Transport") {
-      icon.className = "fa-solid fa-car-side icon";
+      icon.className = "fa-solid fa-car-side icons";
 
       name.innerText = exp[i].name;
       category.innerText = exp[i].category;
@@ -127,6 +131,7 @@ function displayExpense() {
 
       symbol.appendChild(icon);
       text.appendChild(name);
+      text.appendChild(br)
       text.appendChild(category);
       main.appendChild(icon);
       main.appendChild(text);
@@ -134,7 +139,7 @@ function displayExpense() {
       main.appendChild(edit);
       container.appendChild(main);
     } else {
-      icon.className = "fa-solid fa-cart-shopping icon";
+      icon.className = "fa-solid fa-cart-shopping icons";
 
       name.innerText = exp[i].name;
       category.innerText = exp[i].category;
@@ -142,6 +147,7 @@ function displayExpense() {
 
       symbol.appendChild(icon);
       text.appendChild(name);
+      text.appendChild(br)
       text.appendChild(category);
       main.appendChild(icon);
       main.appendChild(text);
@@ -151,7 +157,6 @@ function displayExpense() {
     }
   }
 }
-
 
 function displayTotal() {
   let exp = JSON.parse(localStorage.getItem("expense"));
