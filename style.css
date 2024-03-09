@@ -27,14 +27,6 @@ input[type="radio"] {
   transform: scale(1.5);
   margin-right: 10px;
 }
-input[type="submit"] {
-  font-size: 26px;
-  background-color: var(--main);
-  border-radius: 50px;
-  height: fit-content;
-  padding: 10px;
-  color: white;
-}
 ul {
   list-style-type: none;
   margin-left: 25%;
@@ -56,6 +48,15 @@ option {
   border-radius: 20px;
   border-color: transparent;
   color: var(--main);
+}
+
+.submit{
+  font-size: 26px;
+  background-color: var(--main);
+  border-radius: 50px;
+  height: fit-content;
+  padding: 10px;
+  color: white;
 }
 .main {
   background-color: white;
@@ -96,16 +97,14 @@ option {
     font-size: 26px;
     font-weight: bold;
     color: var(--main);
-    padding-left: 10px;
 
 }
 .breadown-text2{
     font-size: 16px;
-    margin-left: 20px;
     color: var(--accent);
 }
 .breadown-price{
-    align-self: flex-end;
+    text-align: right;
 }
 .edit{
     color: darkgreen;
@@ -113,6 +112,7 @@ option {
     border-radius: 10px;
     padding: 5px;
     font-size: 30px;
+    cursor: pointer;
 }
 .del{
     color: darkred;
@@ -120,6 +120,7 @@ option {
     border-radius: 10px;
     padding: 5px;
     font-size: 30px;
+    cursor: pointer;
 }
 .label {
   font-size: 36px;
@@ -182,4 +183,50 @@ option {
 }
 .flex-between {
   justify-content: space-between;
+}
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.hidden{
+    display: none;
+}
+.popup {
+  width: max-content;
+  background-color: lightgreen;
+  color: #fff;
+  text-align: center;
+  border-radius: 20px;
+  left: 30.3%;
+  top:42%;
+  padding: 8px 0;
+  position: fixed;
+}
+.icon2 {
+  color: darkgreen;
+  font-size: 16px;
+  border-radius: 20px;
+}
+.popup-intput{
+    font-size: 16px;
+    width: 200px;
+    height: 20px;
+    padding: 5px;
+}
+.popup-select{
+    background-color: darkgreen;
+    font-size: 16px;
+    height: 20px;
+}
+.popup-button{
+    background-color: darkgreen;
+    border-color: transparent;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
 }

@@ -73,7 +73,7 @@ function displayExpense() {
     let text = document.createElement("div");
     let prices = document.createElement("div");
     let edit = document.createElement("div");
-    let br = document.createElement("br")
+    let br = document.createElement("br");
 
     let icon = document.createElement("i");
     let edi = document.createElement("i");
@@ -84,7 +84,7 @@ function displayExpense() {
     let category = document.createElement("label");
 
     main.className = " container flex-around breakdown-contain";
-    symbol.className ="child";
+    symbol.className = "child";
     price.className = "breadown-price child";
     name.className = "breakdown-text1";
     category.className = "breakdown-text2";
@@ -92,17 +92,23 @@ function displayExpense() {
     edi.className = "fa-solid fa-pen-to-square edit";
     del.className = "fa-solid fa-trash del";
 
+    edi.id = exp[i].name;
+    edi.addEventListener("click", function () {
+      let popup = document.getElementById("myPopup");
+      popup.classList.remove("hidden");
+    });
+
     del.id = exp[i].name;
-    del.addEventListener('click',function(){
-        let exp = JSON.parse(localStorage.getItem("expense"));
-        let newexp = [];
-        for (let i = 0; i < exp.length; i++) {
-          if (exp[i].name != del.id) {
-            newexp.push(exp[i]);
-          }
+    del.addEventListener("click", function () {
+      let exp = JSON.parse(localStorage.getItem("expense"));
+      let newexp = [];
+      for (let i = 0; i < exp.length; i++) {
+        if (exp[i].name != del.id) {
+          newexp.push(exp[i]);
         }
-        localStorage.setItem("expense", JSON.stringify(newexp));
-        location.reload()
+      }
+      localStorage.setItem("expense", JSON.stringify(newexp));
+      location.reload();
     });
     edit.appendChild(del);
     edit.appendChild(edi);
@@ -115,7 +121,7 @@ function displayExpense() {
 
       symbol.appendChild(icon);
       text.appendChild(name);
-      text.appendChild(br)
+      text.appendChild(br);
       text.appendChild(category);
       main.appendChild(icon);
       main.appendChild(text);
@@ -131,7 +137,7 @@ function displayExpense() {
 
       symbol.appendChild(icon);
       text.appendChild(name);
-      text.appendChild(br)
+      text.appendChild(br);
       text.appendChild(category);
       main.appendChild(icon);
       main.appendChild(text);
@@ -147,7 +153,7 @@ function displayExpense() {
 
       symbol.appendChild(icon);
       text.appendChild(name);
-      text.appendChild(br)
+      text.appendChild(br);
       text.appendChild(category);
       main.appendChild(icon);
       main.appendChild(text);
