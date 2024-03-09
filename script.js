@@ -6,6 +6,7 @@ async function GetCurrency() {
       const currency = response.json();
       currency
         .then(function (ans) {
+          console.log(ans);
           document.getElementById("USD").innerText = ans[0].symbol;
           document.getElementById("Euro").innerText = ans[1].symbol;
           document.getElementById("UAE").innerText = ans[2].symbol;
@@ -19,8 +20,36 @@ async function GetCurrency() {
       console.log(err);
     });
 }
+async function convertTo(currency, amount) {
+  const convert = await fetch(
+    "https://ivory-ostrich-yoke.cyclic.app/students/convert/",
+    {
+      method: "POST",
+      body: JSON.stringify({ from: currency, to: "USD", amount: amount }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+    // .then(function (response) {
+    //   const result = response.json();
+    //   result
+    //     .then(function (ans) {
+    //       console.log(ans);
+    //       return ans;
+    //     })
+    //     .catch(function (err) {
+    //       console.log(err);
+    //     });
+    // })
+    // .catch(function (err) {
+    //   console.log(err);
+    // });
+    const content = await convert.json();
+    return await content;  
+}
+
 window.onload = () => {
-  console.log("onload " + JSON.parse(localStorage.getItem("expense"), "[]"));
   if (localStorage.getItem("expense") == null) {
     let empty = [];
     localStorage.setItem("expense", JSON.stringify(empty));
@@ -39,7 +68,7 @@ function AddExpense() {
   let check = getChecked();
   let item = {
     price: amount.value,
-    currency: currency.options[currency.selectedIndex].text,
+    currency: currency.options[currency.selectedIndex].value,
     name: type.value,
     category: check.value,
   };
@@ -55,9 +84,7 @@ function getChecked() {
   } else if (travel.checked == true) {
     return travel;
   } else {
-    return {
-      shop,
-    };
+    return shop;
   }
 }
 function Store(exp) {
@@ -65,11 +92,11 @@ function Store(exp) {
 }
 function displayExpense() {
   let exp = JSON.parse(localStorage.getItem("expense"));
-  console.log("display " + exp);
   let container = document.getElementById("expenses");
   for (let i = 0; i < exp.length; i++) {
     let main = document.createElement("div");
-    let symbol = document.createElement("div");
+    let left = document.createElement("div");
+    let right = document.createElement("div");
     let text = document.createElement("div");
     let prices = document.createElement("div");
     let edit = document.createElement("div");
@@ -83,12 +110,15 @@ function displayExpense() {
     let name = document.createElement("label");
     let category = document.createElement("label");
 
-    main.className = " container flex-around breakdown-contain";
-    symbol.className = "child";
-    price.className = "breadown-price child";
+    main.className = " container flex-between breakdown-contain";
+    left.className = "container flex-even";
+    right.className = "container flex-even";
+
+    price.className = "breadown-price ";
     name.className = "breakdown-text1";
     category.className = "breakdown-text2";
-    edit.className = " container flex-even child";
+
+    edit.className = " container flex-even";
     edi.className = "fa-solid fa-pen-to-square edit";
     del.className = "fa-solid fa-trash del";
 
@@ -121,14 +151,19 @@ function displayExpense() {
       category.innerText = exp[i].category;
       price.innerText = " ~ " + exp[i].currency + " " + exp[i].price;
 
-      symbol.appendChild(icon);
       text.appendChild(name);
       text.appendChild(br);
       text.appendChild(category);
-      main.appendChild(icon);
-      main.appendChild(text);
-      main.appendChild(prices);
-      main.appendChild(edit);
+
+      left.appendChild(icon);
+      left.appendChild(text);
+
+      right.appendChild(prices);
+      right.appendChild(edit);
+
+      main.appendChild(left);
+      main.appendChild(right);
+
       container.appendChild(main);
     } else if (exp[i].category == "Transport") {
       icon.className = "fa-solid fa-car-side icons";
@@ -137,14 +172,19 @@ function displayExpense() {
       category.innerText = exp[i].category;
       price.innerText = " ~ " + exp[i].currency + " " + exp[i].price;
 
-      symbol.appendChild(icon);
       text.appendChild(name);
       text.appendChild(br);
       text.appendChild(category);
-      main.appendChild(icon);
-      main.appendChild(text);
-      main.appendChild(prices);
-      main.appendChild(edit);
+
+      left.appendChild(icon);
+      left.appendChild(text);
+
+      right.appendChild(prices);
+      right.appendChild(edit);
+
+      main.appendChild(left);
+      main.appendChild(right);
+
       container.appendChild(main);
     } else {
       icon.className = "fa-solid fa-cart-shopping icons";
@@ -153,39 +193,48 @@ function displayExpense() {
       category.innerText = exp[i].category;
       price.innerText = " ~ " + exp[i].currency + " " + exp[i].price;
 
-      symbol.appendChild(icon);
       text.appendChild(name);
       text.appendChild(br);
       text.appendChild(category);
-      main.appendChild(icon);
-      main.appendChild(text);
-      main.appendChild(prices);
-      main.appendChild(edit);
+
+      left.appendChild(icon);
+      left.appendChild(text);
+
+      right.appendChild(prices);
+      right.appendChild(edit);
+
+      main.appendChild(left);
+      main.appendChild(right);
+
       container.appendChild(main);
     }
   }
 }
 
-function displayTotal() {
+async function displayTotal() {
   let exp = JSON.parse(localStorage.getItem("expense"));
-  console.log("display total " + exp);
   let total = 0;
+
   for (let i = 0; i < exp.length; i++) {
-    total += parseInt(exp[i].price);
+    total += await convertTo(exp[i].currency, exp[i].price);
   }
+  total = Math.round(total* 100) / 100;
   document.getElementById("total").innerText = total + "$";
   let expenses = ["Food", "Transport", "Misc"];
   let barColors = ["yellow", "blue", "red"];
-  let prices = [];
+  let prices = [0, 0, 0];
   for (let i = 0; i < exp.length; i++) {
     if (exp[i].category == "Food") {
-      prices[0] += parseInt(exp[i].price);
+      prices[0] += await convertTo(exp[i].currency, exp[i].price);
     } else if (exp[i].category == "Transport") {
-      prices[1] += parseInt(exp[i].price);
+      prices[1] += await convertTo(exp[i].currency, exp[i].price);
     } else {
-      prices[2] += parseInt(exp[i].price);
+      prices[2] += await convertTo(exp[i].currency, exp[i].price);
     }
   }
+  prices[0] =Math.round(prices[0] * 100) / 100;
+  prices[1] =Math.round(prices[1] * 100) / 100;
+  prices[2] =Math.round(prices[2] * 100) / 100;
   new Chart("myChart", {
     type: "pie",
     data: {
@@ -222,4 +271,5 @@ function AdjustExpense() {
   console.log(exp);
   localStorage.setItem("expense", JSON.stringify(exp));
 }
+
 GetCurrency();
