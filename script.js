@@ -221,7 +221,7 @@ async function displayTotal() {
   total = Math.round(total* 100) / 100;
   document.getElementById("total").innerText = total + "$";
   let expenses = ["Food", "Transport", "Misc"];
-  let barColors = ["yellow", "blue", "red"];
+  let barColors = ["#E9FF70", "#0078BE", "#FF70A6"];
   let prices = [0, 0, 0];
   for (let i = 0; i < exp.length; i++) {
     if (exp[i].category == "Food") {
