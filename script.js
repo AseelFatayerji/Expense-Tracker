@@ -6,7 +6,6 @@ async function GetCurrency() {
       const currency = response.json();
       currency
         .then(function (ans) {
-          console.log(ans);
           document.getElementById("USD").innerText = ans[0].symbol;
           document.getElementById("Euro").innerText = ans[1].symbol;
           document.getElementById("UAE").innerText = ans[2].symbol;
@@ -31,20 +30,6 @@ async function convertTo(currency, amount) {
       },
     }
   )
-    // .then(function (response) {
-    //   const result = response.json();
-    //   result
-    //     .then(function (ans) {
-    //       console.log(ans);
-    //       return ans;
-    //     })
-    //     .catch(function (err) {
-    //       console.log(err);
-    //     });
-    // })
-    // .catch(function (err) {
-    //   console.log(err);
-    // });
     const content = await convert.json();
     return await content;  
 }
@@ -268,7 +253,6 @@ function AdjustExpense() {
   }
   exp[index].name = new_type.value;
   exp[index].price = new_price.value;
-  console.log(exp);
   localStorage.setItem("expense", JSON.stringify(exp));
 }
 
