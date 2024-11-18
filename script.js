@@ -34,10 +34,10 @@ async function convertTo(currency, amount) {
     );
     const data = await response.json();
     if (currency === "CAD") {
-      return data.data.CAD * amount;
+      return amount / data.data.CAD ;
     }
     if (currency === "EUR") {
-      return data.data.EUR * amount;
+      return amount /data.data.EUR ;
     }
   } catch (err) {
     console.log(err);
