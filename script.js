@@ -57,7 +57,7 @@ function AddExpense() {
     name: type.value,
     category: check.value,
   };
-  console.log(exp);
+  
   exp.push(item);
   Store(exp);
 }
