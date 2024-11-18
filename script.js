@@ -1,3 +1,12 @@
+window.onload = () => {
+  if (localStorage.getItem("expense") == null) {
+    let empty = [];
+    localStorage.setItem("expense", JSON.stringify(empty.length));
+    return;
+  }
+  displayTotal();
+  displayExpense();
+};
 function GetCurrency() {
   const res = fetch(
     "https://api.freecurrencyapi.com/v1/currencies?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh&currencies=EUR%2CUSD%2CCAD"
@@ -8,7 +17,7 @@ function GetCurrency() {
         .then(function (ans) {
           document.getElementById("USD").innerText = ans.data.USD.symbol;
           document.getElementById("Euro").innerText = ans.data.EUR.symbol;
-          document.getElementById("UAE").innerText = ans.data.CAD.symbol;
+          document.getElementById("CAD").innerText = ans.data.CAD.symbol;
         })
         .catch(function (err) {
           console.log(err);
@@ -18,24 +27,24 @@ function GetCurrency() {
       console.log(err);
     });
 }
-async function convertTo(currency, amount) {
-  // const convert = await fetch(
-  //   "https://api.freecurrencyapi.com/v1/currencies?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh&currencies=EUR%2CUSD%2CCAD"
-  // );
-  // console.log(convert.body())
-  // //return convert.json();
+function convertTo(currency, amount) {
+  const convert = fetch(
+    "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh&currencies=EUR%2CUSD%2CCAD"
+  )
+    .then(function (response) {
+      const currency = response.json();
+      currency
+        .then(function (ans) {
+          console.log(ans);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
 }
-
-window.onload = () => {
-  if (localStorage.getItem("expense") == null) {
-    let empty = [];
-    localStorage.setItem("expense", JSON.stringify(empty));
-    return;
-  }
-  displayTotal();
-  displayExpense();
-};
-
 function AddExpense() {
   let amount = document.getElementById("amount");
   let type = document.getElementById("type");
@@ -49,6 +58,7 @@ function AddExpense() {
     name: type.value,
     category: check.value,
   };
+  console.log(item);
   exp.push(item);
   Store(exp);
 }
@@ -192,9 +202,11 @@ function displayExpense() {
 async function displayTotal() {
   let exp = JSON.parse(localStorage.getItem("expense"));
   let total = 0;
-
   for (let i = 0; i < exp.length; i++) {
-    total += await convertTo(exp[i].currency, exp[i].price);
+    if (exp[i].currency == "USD") {
+      total += exp[i].price;
+    } else {
+    }
   }
   total = Math.round(total * 100) / 100;
   document.getElementById("total").innerText = total + "$";
@@ -203,11 +215,20 @@ async function displayTotal() {
   let prices = [0, 0, 0];
   for (let i = 0; i < exp.length; i++) {
     if (exp[i].category == "Food") {
-      prices[0] += await convertTo(exp[i].currency, exp[i].price);
+      if (exp[i].currency == "USD") {
+        prices[0] += exp[i].price;
+      } else {
+      }
     } else if (exp[i].category == "Transport") {
-      prices[1] += await convertTo(exp[i].currency, exp[i].price);
+      if (exp[i].currency == "USD") {
+        prices[1] += exp[i].price;
+      } else {
+      }
     } else {
-      prices[2] += await convertTo(exp[i].currency, exp[i].price);
+      if (exp[i].currency == "USD") {
+        prices[2] += exp[i].price;
+      } else {
+      }
     }
   }
   prices[0] = Math.round(prices[0] * 100) / 100;
