@@ -224,19 +224,19 @@ async function displayTotal() {
       if (exp[i].currency == "USD") {
         prices[0] += parseInt(exp[i].price);
       } else {
-        prices[0] += convertTo(exp[i].currency, parseInt(exp[i].price));
+        prices[0] += await convertTo(exp[i].currency, parseInt(exp[i].price));
       }
     } else if (exp[i].category == "Transport") {
       if (exp[i].currency == "USD") {
         prices[1] += parseInt(exp[i].price);
       } else {
-        prices[1] += convertTo(exp[i].currency, parseInt(exp[i].price));
+        prices[1] += await convertTo(exp[i].currency, parseInt(exp[i].price));
       }
     } else {
       if (exp[i].currency == "USD") {
         prices[2] += parseInt(exp[i].price);
       } else {
-        prices[2] += convertTo(exp[i].currency, parseInt(exp[i].price));
+        prices[2] += await convertTo(exp[i].currency, parseInt(exp[i].price));
       }
     }
   }
