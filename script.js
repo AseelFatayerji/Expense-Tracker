@@ -1,7 +1,7 @@
 window.onload = () => {
   if (localStorage.getItem("expense") == null) {
     let empty = [];
-    localStorage.setItem("expense", JSON.stringify(empty.length));
+    localStorage.setItem("expense", JSON.stringify(empty));
     return;
   }
   displayTotal();
@@ -49,7 +49,7 @@ function AddExpense() {
   let type = document.getElementById("type");
   let currency = document.getElementById("currency");
 
-  let exp = JSON.parse(localStorage.getItem("expense"))|| [];
+  let exp =  JSON.parse(localStorage.getItem("expense"));
   let check = getChecked();
   let item = {
     price: amount.value,
