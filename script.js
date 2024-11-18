@@ -136,11 +136,13 @@ function displayExpense() {
       icon.className = "fa-solid fa-utensils icons";
       name.innerText = exp[i].name;
       category.innerText = exp[i].category;
-      price.innerText = " ~ " + exp[i].currency + " " + exp[i].price;
+      price.innerText = " ~ " + exp[i].price + " " + exp[i].currency;
 
       text.appendChild(name);
       text.appendChild(br);
       text.appendChild(category);
+
+      prices.appendChild(price);
 
       left.appendChild(icon);
 
@@ -157,11 +159,13 @@ function displayExpense() {
 
       name.innerText = exp[i].name;
       category.innerText = exp[i].category;
-      price.innerText = " ~ " + exp[i].currency + " " + exp[i].price;
+      price.innerText = " ~ " + exp[i].price + " " + exp[i].currency;
 
       text.appendChild(name);
       text.appendChild(br);
       text.appendChild(category);
+
+      prices.appendChild(price);
 
       left.appendChild(icon);
 
@@ -178,11 +182,13 @@ function displayExpense() {
 
       name.innerText = exp[i].name;
       category.innerText = exp[i].category;
-      price.innerText = " ~ " + exp[i].currency + " " + exp[i].price;
+      price.innerText = " ~ " + exp[i].price + " " + exp[i].currency;
 
       text.appendChild(name);
       text.appendChild(br);
       text.appendChild(category);
+
+      prices.appendChild(price);
 
       left.appendChild(icon);
 
