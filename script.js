@@ -204,7 +204,7 @@ async function displayTotal() {
   let total = 0;
   for (let i = 0; i < exp.length; i++) {
     if (exp[i].currency == "USD") {
-      total += exp[i].price;
+      total += parseInt(exp[i].price);
     } else {
     }
   }
@@ -216,17 +216,17 @@ async function displayTotal() {
   for (let i = 0; i < exp.length; i++) {
     if (exp[i].category == "Food") {
       if (exp[i].currency == "USD") {
-        prices[0] += exp[i].price;
+        prices[0] += parseInt(exp[i].price);
       } else {
       }
     } else if (exp[i].category == "Transport") {
       if (exp[i].currency == "USD") {
-        prices[1] += exp[i].price;
+        prices[1] += parseInt(exp[i].price);
       } else {
       }
     } else {
       if (exp[i].currency == "USD") {
-        prices[2] += exp[i].price;
+        prices[2] += parseInt(exp[i].price);
       } else {
       }
     }
