@@ -49,7 +49,7 @@ function AddExpense() {
   let type = document.getElementById("type");
   let currency = document.getElementById("currency");
 
-  let exp = JSON.parse(localStorage.getItem("expense"));
+  let exp = JSON.parse(localStorage.getItem("expense"))|| '[]';
   let check = getChecked();
   let item = {
     price: amount.value,
