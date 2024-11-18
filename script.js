@@ -21,7 +21,7 @@ async function GetCurrency() {
 }
 async function convertTo(currency, amount) {
   const convert = await fetch(
-    "https://ivory-ostrich-yoke.cyclic.app/students/convert/",
+    "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh",
     {
       method: "POST",
       body: JSON.stringify({ from: currency, to: "USD", amount: amount }),
