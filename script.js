@@ -101,7 +101,7 @@ function displayExpense() {
     right.className = "container flex-even";
     text.className = "expenses";
 
-    price.className = "breadown-price ";
+    prices.className = "breadown-price ";
     name.className = "breakdown-text1";
     category.className = "breakdown-text2";
 

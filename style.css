@@ -103,7 +103,8 @@ option {
   color: var(--accent);
 }
 .breadown-price {
-  text-align: right;
+  text-align: center;
+  padding: 10px;
 }
 .edit {
   cursor: pointer;
