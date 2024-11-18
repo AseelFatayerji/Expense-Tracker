@@ -6,7 +6,7 @@
   font-family: "Karla";
 }
 body {
-  padding: 20px;
+  align-content: center;
   background-color: #f0f0f0;
 }
 input[type="text"] {
@@ -59,13 +59,11 @@ option {
   color: white;
 }
 .main {
+  align-self: center;
   background-color: white;
   border-radius: 40px;
   padding: 20px;
-  width: 80%;
-  height: fit-content;
-  margin-left: 10%;
-  display: flex;
+  width: fit-content;
 }
 
 .total {
@@ -86,7 +84,6 @@ option {
 .breakdown {
   align-items: center;
   align-content: center;
-  padding: 40px;
 }
 .breakdown-contain {
   align-items: center;
@@ -162,8 +159,7 @@ option {
   border-radius: 10px;
 }
 .info {
-  width: 150%;
-  max-width: 150%;
+  width: fit-content;
 }
 .inputs {
   border-radius: 20px;
@@ -202,8 +198,8 @@ option {
 }
 .flex-between {
   justify-content: space-between;
-}
 
+}
 .hidden {
   display: none;
 }
