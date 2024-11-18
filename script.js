@@ -1,15 +1,14 @@
-async function GetCurrency() {
-  const res = await fetch(
-    "https://ivory-ostrich-yoke.cyclic.app/students/available"
+function GetCurrency() {
+  const res = fetch(
+    "https://api.freecurrencyapi.com/v1/currencies?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh&currencies=EUR%2CUSD%2CCAD"
   )
     .then(function (response) {
       const currency = response.json();
       currency
         .then(function (ans) {
-          document.getElementById("USD").innerText = ans[0].symbol;
-          document.getElementById("Euro").innerText = ans[1].symbol;
-          document.getElementById("UAE").innerText = ans[2].symbol;
-          document.getElementById("LBP").innerText = ans[3].symbol;
+          document.getElementById("USD").innerText = ans.data.USD.symbol;
+          document.getElementById("Euro").innerText = ans.data.EUR.symbol;
+          document.getElementById("UAE").innerText = ans.data.CAD.symbol;
         })
         .catch(function (err) {
           console.log(err);
@@ -20,17 +19,11 @@ async function GetCurrency() {
     });
 }
 async function convertTo(currency, amount) {
-  const convert = await fetch(
-    "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh",
-    {
-      method: "POST",
-      body: JSON.stringify({ from: currency, to: "USD", amount: amount }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-    return convert.json();  
+  // const convert = await fetch(
+  //   "https://api.freecurrencyapi.com/v1/currencies?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh&currencies=EUR%2CUSD%2CCAD"
+  // );
+  // console.log(convert.body())
+  // //return convert.json();
 }
 
 window.onload = () => {
@@ -202,7 +195,7 @@ async function displayTotal() {
   for (let i = 0; i < exp.length; i++) {
     total += await convertTo(exp[i].currency, exp[i].price);
   }
-  total = Math.round(total* 100) / 100;
+  total = Math.round(total * 100) / 100;
   document.getElementById("total").innerText = total + "$";
   let expenses = ["Food", "Transport", "Misc"];
   let barColors = ["#E9FF70", "#0078BE", "#FF70A6"];
@@ -216,9 +209,9 @@ async function displayTotal() {
       prices[2] += await convertTo(exp[i].currency, exp[i].price);
     }
   }
-  prices[0] =Math.round(prices[0] * 100) / 100;
-  prices[1] =Math.round(prices[1] * 100) / 100;
-  prices[2] =Math.round(prices[2] * 100) / 100;
+  prices[0] = Math.round(prices[0] * 100) / 100;
+  prices[1] = Math.round(prices[1] * 100) / 100;
+  prices[2] = Math.round(prices[2] * 100) / 100;
   new Chart("myChart", {
     type: "pie",
     data: {

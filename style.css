@@ -73,6 +73,7 @@ option {
 .total {
   border-radius: 20px;
   background-color: var(--main);
+  color: white;
   height: 25%;
   text-align: center;
   width: 100%;
@@ -139,7 +140,7 @@ option {
   background-color: white;
   border-radius: 40px;
   margin: 10px;
-  width: 90%;
+  width: 80%;
   height: fit-content;
 }
 .icon {
