@@ -27,31 +27,23 @@ function GetCurrency() {
       console.log(err);
     });
 }
-function convertTo(currency, amount) {
-  fetch(
-    "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh&currencies=EUR%2CUSD%2CCAD"
-  )
-    .then(function (response) {
-      const data = response.json();
-      data
-        .then(function (ans) {
-          if (currency == "CAD") {
-            let convert = ans.data.CAD * amount;
-            return convert;
-          }
-          if (currency == "EUR") {
-            let convert = ans.data.EUR * amount;
-            return convert;
-          }
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+async function convertTo(currency, amount) {
+  try {
+    const response = await fetch(
+      "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh&currencies=EUR%2CUSD%2CCAD"
+    );
+    const data = await response.json();
+    if (currency === "CAD") {
+      return data.data.CAD * amount;
+    }
+    if (currency === "EUR") {
+      return data.data.EUR * amount;
+    }
+  } catch (err) {
+    console.log(err);
+  }
 }
+
 function AddExpense() {
   let amount = document.getElementById("amount");
   let type = document.getElementById("type");
@@ -213,6 +205,7 @@ async function displayTotal() {
     if (exp[i].currency == "USD") {
       total += parseInt(exp[i].price);
     } else {
+      total += await convertTo(exp[i].currency, parseInt(exp[i].price));
     }
   }
   total = Math.round(total * 100) / 100;
