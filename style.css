@@ -90,7 +90,9 @@ option {
   align-content: center;
   width: 100%;
 }
-
+.expenses {
+  text-align: center;
+}
 .breakdown-text1 {
   font-size: 26px;
   font-weight: bold;
@@ -154,11 +156,13 @@ option {
 .icons {
   background-color: var(--accent);
   color: var(--main);
-  font-size: 26px;
-  padding: 10px 6px 6px 6px;
-  margin-right: 20px;
+  font-size: 20px;
   text-align: center;
-  width: 35px;
+  align-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  margin: 5px;
   border-radius: 10px;
 }
 .info {
@@ -263,7 +267,8 @@ option {
     text-align: left;
   }
   .breakdown-contain {
-    width: 90%;
+    width: 80%;
+    margin: 10px;
   }
   .breakdown-text1 {
     font-size: 16px;
@@ -271,7 +276,6 @@ option {
   .icons {
     width: max-content;
     font-size: 16px;
-    padding: 8px 3px 3px 3px;
   }
   .inputs {
     width: 100%;

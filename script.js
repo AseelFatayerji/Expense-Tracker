@@ -33,7 +33,7 @@ window.onload = () => {
     return;
   }
   displayTotal();
-  //displayExpense();
+  displayExpense();
 };
 
 function AddExpense() {
@@ -79,9 +79,9 @@ function displayExpense() {
     let edit = document.createElement("div");
     let br = document.createElement("br");
 
-    let icon = document.createElement("i");
-    let edi = document.createElement("i");
-    let del = document.createElement("i");
+    let icon = document.createElement("div");
+    let edi = document.createElement("div");
+    let del = document.createElement("div");
 
     let price = document.createElement("label");
     let name = document.createElement("label");
@@ -90,6 +90,7 @@ function displayExpense() {
     main.className = " container flex-between breakdown-contain";
     left.className = "container flex-even";
     right.className = "container flex-even";
+    text.className = "expenses";
 
     price.className = "breadown-price ";
     name.className = "breakdown-text1";
@@ -133,12 +134,12 @@ function displayExpense() {
       text.appendChild(category);
 
       left.appendChild(icon);
-      left.appendChild(text);
 
       right.appendChild(prices);
       right.appendChild(edit);
 
       main.appendChild(left);
+      main.appendChild(text);
       main.appendChild(right);
 
       container.appendChild(main);
@@ -154,12 +155,12 @@ function displayExpense() {
       text.appendChild(category);
 
       left.appendChild(icon);
-      left.appendChild(text);
 
       right.appendChild(prices);
       right.appendChild(edit);
 
       main.appendChild(left);
+      main.appendChild(text);
       main.appendChild(right);
 
       container.appendChild(main);
@@ -175,12 +176,12 @@ function displayExpense() {
       text.appendChild(category);
 
       left.appendChild(icon);
-      left.appendChild(text);
 
       right.appendChild(prices);
       right.appendChild(edit);
 
       main.appendChild(left);
+      main.appendChild(text);
       main.appendChild(right);
 
       container.appendChild(main);
