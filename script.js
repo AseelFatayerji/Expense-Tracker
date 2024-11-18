@@ -1,6 +1,6 @@
 async function GetCurrency() {
   const res = await fetch(
-    "https://rich-erin-angler-hem.cyclic.app/students/available"
+    "https://ivory-ostrich-yoke.cyclic.app/students/available"
   )
     .then(function (response) {
       const currency = response.json();
