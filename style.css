@@ -1,6 +1,6 @@
 :root {
   --main: #49184a;
-  --accent: #9a5b9a;
+  --accent: lavender;
 }
 * {
   font-family: "Karla";
@@ -71,7 +71,7 @@ option {
   border-radius: 20px;
   background-color: var(--main);
   height: 25%;
-  text-align: center; 
+  text-align: center;
   margin-right: 20px;
   max-width: 100%;
   padding: 5px;
@@ -79,13 +79,13 @@ option {
 .title {
   font-size: 36px;
   font-weight: bolder;
-  color: lavender;
+  color: var(--accent);
   margin: 10px;
 }
 .breakdown {
   align-items: center;
   align-content: center;
-  padding: 10px;
+  padding: 40px;
 }
 .breakdown-contain {
   align-items: center;
@@ -157,7 +157,7 @@ option {
   width: 35px;
   border-radius: 10px;
 }
-.info{
+.info {
   width: 150%;
   max-width: 150%;
 }
@@ -176,6 +176,7 @@ option {
 }
 .container {
   display: flex;
+  text-align: center;
 }
 .child {
   flex: 1;
@@ -241,7 +242,7 @@ option {
   text-align: center;
 }
 
-@media screen and (min-width: 200px) and (max-width:1200px){
+@media screen and (min-width: 200px) and (max-width: 1200px) {
   .main {
     background-color: white;
     border-radius: 40px;
@@ -250,21 +251,21 @@ option {
     height: 150%;
     margin-left: 10%;
   }
-  .chart-container{
+  .chart-container {
     display: none;
   }
-  .total{
+  .total {
     width: 85%;
-  max-width: 85%;
+    max-width: 85%;
   }
-.main-container{
-  display: block;
+  .main-container {
+    display: block;
   }
-  .child{
+  .child {
     padding: 0px;
     text-align: left;
   }
-  .breakdown-contain{
+  .breakdown-contain {
     width: 90%;
   }
   .breakdown-text1 {
@@ -275,14 +276,14 @@ option {
     font-size: 16px;
     padding: 8px 3px 3px 3px;
   }
-  .edit{
+  .edit {
     font-size: 16px;
   }
-  .del{
+  .del {
     font-size: 16px;
   }
 
-  .inputs{
+  .inputs {
     width: 100%;
     padding: 0px;
   }
@@ -292,7 +293,7 @@ option {
   .icon {
     font-size: 20px;
   }
-  .popup{
+  .popup {
     margin-left: 0%;
   }
   .popup-button {
@@ -312,8 +313,7 @@ option {
   ul {
     margin-left: 0%;
   }
-  ul li{
+  ul li {
     font-size: 16px;
   }
-
 }
