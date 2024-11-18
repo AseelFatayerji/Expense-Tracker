@@ -28,14 +28,21 @@ function GetCurrency() {
     });
 }
 function convertTo(currency, amount) {
-  const convert = fetch(
+  fetch(
     "https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_H2eEwbop6CGtF3QP9pakHClp5CjSyQAEKr1WTjQh&currencies=EUR%2CUSD%2CCAD"
   )
     .then(function (response) {
-      const currency = response.json();
-      currency
+      const data = response.json();
+      data
         .then(function (ans) {
-          console.log(ans);
+          if (currency == "CAD") {
+            let convert = ans.data.CAD * amount;
+            return convert;
+          }
+          if (currency == "EUR") {
+            let convert = ans.data.EUR * amount;
+            return convert;
+          }
         })
         .catch(function (err) {
           console.log(err);
@@ -218,16 +225,19 @@ async function displayTotal() {
       if (exp[i].currency == "USD") {
         prices[0] += parseInt(exp[i].price);
       } else {
+        prices[0] += convertTo(exp[i].currency, parseInt(exp[i].price));
       }
     } else if (exp[i].category == "Transport") {
       if (exp[i].currency == "USD") {
         prices[1] += parseInt(exp[i].price);
       } else {
+        prices[1] += convertTo(exp[i].currency, parseInt(exp[i].price));
       }
     } else {
       if (exp[i].currency == "USD") {
         prices[2] += parseInt(exp[i].price);
       } else {
+        prices[2] += convertTo(exp[i].currency, parseInt(exp[i].price));
       }
     }
   }
