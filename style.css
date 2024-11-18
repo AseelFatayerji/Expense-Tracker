@@ -12,7 +12,7 @@ body {
   justify-content: center;
 }
 input[type="text"] {
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 20px;
   border-color: transparent;
   border-bottom: var(--main);
@@ -20,7 +20,7 @@ input[type="text"] {
 }
 input[type="number"] {
   font-size: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   border-color: transparent;
   border-bottom: var(--main);
   margin-left: 10px;
@@ -142,7 +142,8 @@ option {
   background-color: var(--accent);
   color: var(--main);
   font-size: 26px;
-  padding: 5px 10px 5px 15px;
+  padding: 5px;
+  margin: 5px;
   border-radius: 20px;
 }
 .icons {
