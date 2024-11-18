@@ -8,6 +8,8 @@
 body {
   align-content: center;
   background-color: #f0f0f0;
+  display:flex; 
+  flex-direction:column; 
 }
 input[type="text"] {
   border-radius: 20px;
@@ -62,7 +64,8 @@ option {
   align-self: center;
   background-color: white;
   border-radius: 40px;
-  padding: 20px;
+  padding: 25px;
+  margin: 10px;
   width: fit-content;
 }
 
@@ -71,7 +74,6 @@ option {
   background-color: var(--main);
   height: 25%;
   text-align: center;
-  margin-right: 20px;
   max-width: 100%;
   padding: 5px;
 }
@@ -84,11 +86,7 @@ option {
 .breakdown {
   align-items: center;
   align-content: center;
-}
-.breakdown-contain {
-  align-items: center;
   width: 100%;
-  padding: 10px;
 }
 
 .breakdown-text1 {
@@ -160,10 +158,10 @@ option {
 }
 .info {
   width: fit-content;
+  padding: 10px;
 }
 .inputs {
   border-radius: 20px;
-  padding: 10px;
   background-color: #f8f4f7;
   align-items: center;
   align-content: center;
@@ -252,8 +250,6 @@ option {
     display: none;
   }
   .total {
-    width: 85%;
-    max-width: 85%;
   }
   .main-container {
     display: block;
@@ -273,7 +269,6 @@ option {
     font-size: 16px;
     padding: 8px 3px 3px 3px;
   }
-
   .inputs {
     width: 100%;
     padding: 0px;

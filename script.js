@@ -40,7 +40,7 @@ window.onload = () => {
     return;
   }
   displayTotal();
-  displayExpense();
+  //displayExpense();
 };
 
 function AddExpense() {
