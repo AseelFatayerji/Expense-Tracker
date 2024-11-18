@@ -40,7 +40,6 @@ select {
   border-radius: 20px;
   border-color: transparent;
   padding: 5px;
-  margin: 5px 0px 0px 10px;
 }
 option {
   border-radius: 20px;
@@ -142,9 +141,11 @@ option {
   background-color: var(--accent);
   color: var(--main);
   font-size: 26px;
-  padding: 5px;
+  padding: 10px;
   margin: 5px;
-  border-radius: 20px;
+  border-radius: 10px;
+  width: 60%;
+  text-align: left;
 }
 .icons {
   background-color: var(--accent);
@@ -288,15 +289,15 @@ option {
     font-size: 15px;
   }
   input[type="number"] {
-    font-size: 10px;
+    font-size: 15px;
     width: fit-content;
   }
   input[type="text"] {
-    font-size: 10px;
+    font-size: 15px;
     width: fit-content;
   }
   input[type="radio"] {
-    font-size: 10px;
+    font-size: 15px;
   }
   ul {
     margin-left: 0%;
