@@ -25,37 +25,38 @@
         <div class="breakdown">
           <div class="label">Breakdown</div>
           <div id="expenses"></div>
-        <span class="popup hidden" id="myPopup">
-          <form onsubmit="window.location.reload();">
-            <div class="container">
-              <div class="child">
-                <div class="col container flex-even">
-                  <div>
-                    <i class="fa-solid fa-sack-xmark icon2"
-                      ><input
-                        class="popup-intput"
-                        type="number"
-                        id="amount-adjust"
+          <span class="popup hidden" id="myPopup">
+            <form onsubmit="window.location.reload();">
+              <div class="container">
+                <div class="child">
+                  <div class="col container flex-even">
+                    <div>
+                      <i class="fa-solid fa-sack-xmark icon2"
+                        ><input
+                          class="popup-intput"
+                          type="number"
+                          id="amount-adjust"
+                      /></i>
+                    </div>
+                  </div>
+                  <div class="col2">
+                    <i class="fa-solid fa-tag icon2"
+                      ><input class="popup-intput" type="text" id="type-adjust"
                     /></i>
                   </div>
                 </div>
-                <div class="col2">
-                  <i class="fa-solid fa-tag icon2"
-                    ><input class="popup-intput" type="text" id="type-adjust"
-                  /></i>
-                </div>
               </div>
-            </div>
-            <div class="button">
-              <input
-                type="submit"
-                class="popup-button"
-                onclick="AdjustExpense()"
-                value="Adjust Expense"
-              />
-            </div>
-          </form>
-        </span></div>
+              <div class="button">
+                <input
+                  type="submit"
+                  class="popup-button"
+                  onclick="AdjustExpense()"
+                  value="Adjust Expense"
+                />
+              </div>
+            </form>
+          </span>
+        </div>
       </div>
       <div>
         <div class="inputs">
