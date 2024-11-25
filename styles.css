@@ -249,15 +249,29 @@ option {
 }
 
 @media screen and (min-width: 200px) and (max-width: 1200px) {
+  html, body{
+    height: 95%;
+  }
   .main {
     background-color: white;
     border-radius: 20px;
     padding: 10px;
-    height: fit-content;
+    height: 100%;
+    max-height: 100%;
     display: block;
   }
   .info {
-    width: 90%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+  .total{
+    width: 100%;
+    padding: 0px;
+  }
+  .title{
+    padding: 10px;
+    margin: 0px;
   }
   .chart-container {
     display: none;
