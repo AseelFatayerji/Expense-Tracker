@@ -115,6 +115,7 @@ option {
   text-align: center;
   padding: 5px;
   margin: 5px;
+  height: fit-content;
 }
 .del {
   cursor: pointer;
@@ -125,6 +126,7 @@ option {
   font-size: 20px;
   padding: 5px;
   margin: 5px;
+  height: fit-content;
 }
 .label {
   padding: 5px;
