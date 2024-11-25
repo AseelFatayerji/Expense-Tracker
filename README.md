@@ -5,6 +5,7 @@ This is a simple expense tracker built using **HTML**, **CSS**, and **JavaScript
 ## Features
 - **Add Expenses**: Users can enter their income or expenses with details such as the amount, description, and category.
 - **View Expenses**: Displays a list of all added expenses with a total calculation.
+- **Adjust Expenses**: Displayed expenses can be edited and adjusted by the user as needed.
 - **Responsive Design**: The tracker adjusts to different screen sizes for a smooth experience across devices.
 
 ## Technologies Used
