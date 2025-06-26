@@ -276,6 +276,7 @@ option {
     margin: 0px;
   }
   .total{
+    height:max-content;
     width: 100%;
     padding: 5px;
   }
